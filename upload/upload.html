@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="upload.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeatBlock Level Editor</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="editable file-upload">
+            <input type="file" id="level-file">
+            <div class="download-btn">Upload level</div>
+        </div>
+    </nav>
+
+    <!-- Level Details -->
+    <div class="level-container">
+        <!-- Columna izquierda -->
+        <div class="left-column">
+            <div class="editable file-upload">
+                <input type="file" id="cover-upload" accept="image/*">
+                <div class="preview-section">
+                    <img src="" class="preview-media" id="cover-preview" alt="Cover preview">
+                    <span class="material-symbols-outlined upload-icon">image</span>
+                </div>
+            </div>
+            
+            <div class="editable file-upload">
+                <input type="file" id="media-upload" accept="image/*, video/*">
+                <div class="preview-section">
+                    <img src="" class="preview-media" id="image-preview" alt="Media preview">
+                    <video controls class="preview-media" id="video-preview"></video>
+                    <span class="material-symbols-outlined upload-icon">play_circle</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Columna derecha -->
+        <div class="right-column">
+            <div class="editable" contenteditable="false" id="level-title">Level Title</div>
+
+            <div class="creator-info">
+                <!-- Avatar manejado por backend (Firebase) -->
+                <img src="" class="profile-pic" id="avatar-preview" alt="Creator avatar" />
+                <div class="editable creator-details" contenteditable="false" id="creator-name">
+                    Creator Info
+                </div>
+            </div>
+
+            <div class="level-stats">
+                <div class="editable stat-item" id="level-date" contenteditable="false">
+                    <!-- Fecha se insertará automáticamente -->
+                </div>
+            </div>
+
+            <div class="editable level-description" contenteditable="true" id="level-description">
+                Level Description
+            </div>
+
+            <div class="credits-section">
+                <div class="editable credit-item" contenteditable="true" id="creator-credit">
+                    Creator
+                </div>
+                <div class="editable credit-item" contenteditable="true" id="programmer-credit">
+                    Programmer
+                </div>
+                <div class="editable credit-item" contenteditable="true" id="artist-credit">
+                    Artist
+                </div>
+                <div class="editable credit-item" contenteditable="true" id="composer-credit">
+                    Composer
+                </div>
+            </div>
+
+            <div class="editable file-upload">
+                <input type="file" accept=".zip" id="zip-upload">
+                <div class="download-btn">Upload ZIP</div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="upload.js"></script>
+</body>
+</html>

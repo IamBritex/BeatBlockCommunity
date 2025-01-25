@@ -1,0 +1,138 @@
+        /* Estilos básicos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Contenedor principal */
+        .level-container {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .left-column, .right-column {
+            flex: 1;
+        }
+
+        /* Campos editables */
+        .editable {
+            background: #e0e0e0;
+            border: 2px dashed #999;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            min-height: 50px;
+            cursor: text;
+        }
+
+        .editable:focus {
+            outline: none;
+            border-color: #666;
+            background: #f0f0f0;
+        }
+
+        .file-upload {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .file-upload input {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .level-cover {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .preview-section {
+            height: 200px;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .preview-media {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: #999;
+        }
+
+        .creator-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-pic {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #e0e0e0;
+        }
+
+        .level-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .download-btn {
+            width: 100%;
+            padding: 12px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .credits-section {
+            margin-bottom: 2rem;
+        }
+
+        .credit-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+        }

@@ -226,6 +226,133 @@ nav {
     font-size: 0.8rem;
     color: #999;
 }
+/* Contenedor de botones de autenticación */
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Botones de autenticación */
+.auth-btn {
+    padding: 10px 20px;
+    border: 2px solid #1a1a1a;
+    border-radius: 25px;
+    background: transparent;
+    color: #1a1a1a;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.auth-btn:hover {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+/* Información del usuario */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Foto de perfil */
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #1a1a1a;
+}
+
+/* Nombre del usuario */
+#user-name {
+    font-weight: 500;
+    color: #1a1a1a;
+    font-size: 0.95rem;
+}
+
+/* Botón de subir nivel */
+.upload-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    background: #1a1a1a;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.upload-btn:hover {
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón de logout */
+#logout-btn {
+    padding: 10px 20px;
+    border: 2px solid #ff4d4d;
+    border-radius: 25px;
+    background: transparent;
+    color: #ff4d4d;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+#logout-btn:hover {
+    background: #ff4d4d;
+    color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .auth-buttons {
+        gap: 0.8rem;
+    }
+
+    .auth-btn, .upload-btn, #logout-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    .user-info {
+        gap: 1rem;
+    }
+
+    .profile-pic {
+        width: 35px;
+        height: 35px;
+    }
+
+    #user-name {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .user-info {
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: flex-start;
+    }
+
+    .profile-pic {
+        width: 30px;
+        height: 30px;
+    }
+}
 
 /* Responsive */
 @media (max-width: 768px) {
