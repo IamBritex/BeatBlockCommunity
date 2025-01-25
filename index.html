@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeatBlock Community</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: #1a1a1a;
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #333;
+            border-radius: 20px;
+            padding: 5px 15px;
+            flex-grow: 1;
+            max-width: 600px;
+            margin: 0 2rem;
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            color: white;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .search-input {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 8px;
+            width: 100%;
+            outline: none;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .auth-btn {
+            background: #4CAF50;
+            border: none;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .auth-btn:hover {
+            opacity: 0.9;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .profile-pic {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-logo {
+            height: 150px;
+            margin-bottom: 2rem;
+        }
+
+        .download-btn {
+            background: #e74c3c;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Levels Grid */
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+
+        .level-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .level-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .level-thumbnail {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .level-info {
+            padding: 1rem;
+        }
+
+        .level-title {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .level-author {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .search-container {
+                display: none;
+            }
+            
+            .nav-left span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-left">
+            <img src="beatblock-logo.png" alt="Logo" class="logo">
+            <span>BeatBlock Community</span>
+        </div>
+        
+        <div class="search-container">
+            <button class="filter-btn">
+                <span class="material-icons">tune</span>
+            </button>
+            <input type="text" class="search-input" placeholder="Buscar niveles...">
+            <span class="material-icons">search</span>
+        </div>
+
+        <div class="auth-buttons">
+            <button class="auth-btn">LogIn</button>
+            <button class="auth-btn">Register</button>
+            <!-- Si está logueado:
+            <div class="user-profile">
+                <span>Username</span>
+                <img src="profile-placeholder.jpg" class="profile-pic">
+            </div>
+            -->
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="game-logo.png" alt="BeatBlock" class="hero-logo">
+        <a href="#" class="download-btn">Descargar Ahora</a>
+    </section>
+
+    <!-- Levels Grid -->
+    <div class="levels-grid">
+        <!-- Ejemplo de tarjeta de nivel -->
+        <div class="level-card">
+            <img src="thumbnail-placeholder.jpg" class="level-thumbnail">
+            <div class="level-info">
+                <h3 class="level-title">Nivel Épico</h3>
+                <p class="level-author">Por: Usuario123</p>
+                <div class="level-stats">
+                    <span class="material-icons">download</span> 1.2k
+                    <span class="material-icons">thumb_up</span> 856
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repetir más tarjetas -->
+    </div>
+
+</body>
+</html>
