@@ -1,238 +1,135 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="https://beatblock.wiki.gg/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BeatBlock Community</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* Reset básico */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        /* Navbar */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            background: #1a1a1a;
-            color: white;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo {
-            height: 40px;
-        }
-
-        .search-container {
-            display: flex;
-            align-items: center;
-            background: #333;
-            border-radius: 20px;
-            padding: 5px 15px;
-            flex-grow: 1;
-            max-width: 600px;
-            margin: 0 2rem;
-        }
-
-        .filter-btn {
-            background: none;
-            border: none;
-            color: white;
-            padding: 8px;
-            cursor: pointer;
-        }
-
-        .search-input {
-            background: transparent;
-            border: none;
-            color: white;
-            padding: 8px;
-            width: 100%;
-            outline: none;
-        }
-
-        .auth-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .auth-btn {
-            background: #4CAF50;
-            border: none;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .auth-btn:hover {
-            opacity: 0.9;
-        }
-
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .profile-pic {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 70vh;
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding-top: 80px;
-        }
-
-        .hero-logo {
-            height: 150px;
-            margin-bottom: 2rem;
-        }
-
-        .download-btn {
-            background: #e74c3c;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: 0.3s;
-        }
-
-        .download-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* Levels Grid */
-        .levels-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
-            background: #f5f5f5;
-        }
-
-        .level-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
-
-        .level-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .level-thumbnail {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .level-info {
-            padding: 1rem;
-        }
-
-        .level-title {
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-
-        .level-author {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .search-container {
-                display: none;
-            }
-            
-            .nav-left span {
-                display: none;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
     <!-- Navbar -->
     <nav>
-        <div class="nav-left">
-            <img src="beatblock-logo.png" alt="Logo" class="logo">
-            <span>BeatBlock Community</span>
+        <img src="https://beatblock.wiki.gg/favicon.ico" alt="BeatBlock Logo" class="logo">
+        <div>
+            BeatBlock Community
         </div>
         
         <div class="search-container">
             <button class="filter-btn">
-                <span class="material-icons">tune</span>
+                <span class="material-symbols-outlined">tune</span>
+                <span>Filters</span>
             </button>
-            <input type="text" class="search-input" placeholder="Buscar niveles...">
-            <span class="material-icons">search</span>
+            <input type="text" class="search-input" placeholder="Search levels...">
+            <span class="material-symbols-outlined search-icon">search</span>
         </div>
 
-        <div class="auth-buttons">
-            <button class="auth-btn">LogIn</button>
-            <button class="auth-btn">Register</button>
-            <!-- Si está logueado:
-            <div class="user-profile">
-                <span>Username</span>
-                <img src="profile-placeholder.jpg" class="profile-pic">
-            </div>
-            -->
+        <div class="auth-buttons" id="auth-buttons">
+            <button class="auth-btn" id="login-btn">Login</button>
+            <button class="auth-btn" id="register-btn">Register</button>
+        </div>
+        <div class="user-info" id="user-info" style="display: none;">
+            <img id="user-photo" alt="Profile Picture" class="profile-pic">
+            <span id="user-name"></span>
+            <button class="upload-btn" onclick="window.location.href='upload.html'">Upload Level</button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <img src="game-logo.png" alt="BeatBlock" class="hero-logo">
-        <a href="#" class="download-btn">Descargar Ahora</a>
+        <img src="https://beatblock.wiki.gg/images/a/a9/Beatblock_logo.png" alt="BeatBlock" class="game-logo">
+        <button class="download-btn">
+            <span class="material-symbols-outlined">download</span>
+            Download Now
+        </button>
     </section>
 
     <!-- Levels Grid -->
-    <div class="levels-grid">
-        <!-- Ejemplo de tarjeta de nivel -->
-        <div class="level-card">
-            <img src="thumbnail-placeholder.jpg" class="level-thumbnail">
-            <div class="level-info">
-                <h3 class="level-title">Nivel Épico</h3>
-                <p class="level-author">Por: Usuario123</p>
-                <div class="level-stats">
-                    <span class="material-icons">download</span> 1.2k
-                    <span class="material-icons">thumb_up</span> 856
-                </div>
-            </div>
-        </div>
-        
-        <!-- Repetir más tarjetas -->
+    <div class="levels-grid" id="levels-grid">
+        <!-- This will be dynamically populated -->
     </div>
 
+    <!-- No Levels Message -->
+    <div id="no-levels" style="display: none; text-align: center; margin: 20px;">
+        <p>No levels are available at the moment. Be the first to upload a level!</p>
+    </div>
+
+    <script>
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAkCSNglCmPI8kU2UnB0DfCZN5d3F0qKew",
+            authDomain: "beatblockcommunity-be8d7.firebaseapp.com",
+            projectId: "beatblockcommunity-be8d7",
+            storageBucket: "beatblockcommunity-be8d7.firebasestorage.app",
+            messagingSenderId: "661527648636",
+            appId: "1:661527648636:web:6beb30be83a0df72542cf9",
+            measurementId: "G-BDZR1G380X"
+        };
+
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.getAuth();
+        const db = firebase.getFirestore();
+
+// Inicializar Firebase
+firebase.initializeApp(firebaseConfig);
+
+
+// Verificar el estado de autenticación
+auth.onAuthStateChanged((user) => {
+    const userInfo = document.getElementById("user-info");
+    const uploadButton = document.getElementById("upload-button");
+
+    if (user) {
+        // Usuario autenticado
+        userInfo.innerHTML = `
+            <img src="${user.photoURL}" alt="Profile" width="30">
+            <span>${user.displayName}</span>
+        `;
+        uploadButton.style.display = "block"; // Mostrar botón de subir nivel
+    } else {
+        // Usuario no autenticado
+        userInfo.innerHTML = '<button onclick="login()">Login</button>';
+        uploadButton.style.display = "none"; // Ocultar botón de subir nivel
+    }
+});
+
+// Mostrar niveles si hay datos en la base de datos
+const levelsGrid = document.getElementById("levels-grid");
+db.collection("levels").get().then((querySnapshot) => {
+    if (querySnapshot.empty) {
+        levelsGrid.innerHTML = "<p>No hay niveles disponibles.</p>";
+    } else {
+        querySnapshot.forEach((doc) => {
+            const level = doc.data();
+            levelsGrid.innerHTML += `
+                <div class="level-card">
+                    <img src="${level.thumbnail}" alt="${level.title}">
+                    <div>
+                        <h3>${level.title}</h3>
+                        <p>Creado por ${level.creator}</p>
+                    </div>
+                </div>
+            `;
+        });
+    }
+}).catch((error) => {
+    console.error("Error al obtener niveles:", error);
+});
+
+// Función de inicio de sesión
+function login() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider).then((result) => {
+        console.log("Usuario autenticado:", result.user);
+    }).catch((error) => {
+        console.error("Error en la autenticación:", error);
+    });
+}
+
+    </script>
 </body>
 </html>

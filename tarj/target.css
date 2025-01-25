@@ -1,0 +1,402 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    cursor: default;
+}
+
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.logo {
+    height: 40px;
+}
+
+.level-title-nav {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000000;
+    max-width: 50%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.auth-btn {
+    padding: 10px 25px;
+    border: 2px solid #000000;
+    border-radius: 25px;
+    cursor: pointer;
+    background: transparent;
+    color: #000000;
+    transition: 0.3s;
+}
+
+.auth-btn:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+/* Level Container */
+.level-container {
+    margin-top: 80px;
+    padding: 2rem;
+    display: flex;
+    gap: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.left-column {
+    flex: 0 0 40%;
+}
+
+.right-column {
+    flex: 1;
+}
+
+.level-cover {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
+}
+
+.preview-section {
+    background: #f5f5f5;
+    border-radius: 15px;
+    padding: 1rem;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #e0e0e0;
+}
+
+/* Creator Info */
+.creator-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #000000;
+}
+
+.creator-details h2 {
+    color: #000000;
+    margin-bottom: 0.5rem;
+}
+
+/* Level Stats */
+.level-stats {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #f5f5f5;
+    border-radius: 15px;
+    border: 2px solid #e0e0e0;
+    cursor: default;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #000000;
+}
+
+#favorite {
+    color: #5f5f5f;
+    cursor: pointer;
+}
+
+#favorite:hover {
+    color: black;
+}
+
+.material-symbols-outlined {
+    color: #000000;
+}
+
+/* Level Description */
+.level-description {
+    margin-bottom: 2rem;
+}
+
+.level-description h3 {
+    color: #000000;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 0.5rem;
+}
+
+#descriptionText {
+    color: #444444;
+    line-height: 1.6;
+}
+
+/* Credits Section */
+.credits-section {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+}
+
+.credit-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.credit-item:last-child {
+    border-bottom: none;
+}
+
+.credit-label {
+    font-weight: 600;
+    color: #000000;
+}
+
+.credit-value {
+    color: #444444;
+    max-width: 60%;
+    text-align: right;
+    cursor: pointer;
+}
+
+/* Download Button */
+.download-btn {
+    width: 100%;
+    background: #000000;
+    color: #ffffff;
+    padding: 1.2rem 2rem;
+    border: none;
+    border-radius: 35px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    transition: 0.3s;
+    margin: 2rem 0;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Comments Section */
+.comments-section {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 15px;
+    border: 2px solid #e0e0e0;
+}
+
+.comments-section h3 {
+    color: #000000;
+    margin-bottom: 1.5rem;
+}
+
+.comment-form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.profile-pic-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #000000;
+}
+
+.comment-input-container {
+    flex-grow: 1;
+    position: relative;
+}
+
+.comment-input {
+    width: 100%;
+    padding: 12px 50px 12px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    font-size: 1rem;
+    background: #ffffff;
+    color: #000000;
+}
+
+.comment-btn {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.comment-btn .material-symbols-outlined {
+    color: white;
+}
+
+.comment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.comment {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 15px;
+    border: 2px solid #e0e0e0;
+}
+
+.comment-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.comment-author {
+    font-weight: 600;
+    color: #000000;
+}
+
+.comment-time {
+    color: #666666;
+    font-size: 0.8rem;
+}
+
+.comment-text {
+    color: #444444;
+    line-height: 1.5;
+}
+
+.comment-actions {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.like-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    color: #8b8b8b;
+    cursor: pointer;
+    padding: 5px;
+}
+
+
+.like-btn .material-symbols-outlined {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    color: #8b8b8b;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.like-btn .material-symbols-outlined:hover {
+    color: #000000;
+}
+.like-btn:hover {
+    color: black;
+}
+
+.reply-btn {
+    background: none;
+    border: none;
+    color: #666666;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.reply-btn:hover {
+    color: #000000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .level-container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    .left-column {
+        flex: none;
+        width: 100%;
+    }
+    
+    .level-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    nav {
+        padding: 1rem;
+    }
+    
+    .auth-btn {
+        padding: 8px 15px;
+    }
+    
+    .level-title-nav {
+        font-size: 1rem;
+    }
+}
