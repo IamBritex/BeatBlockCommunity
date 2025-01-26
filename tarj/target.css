@@ -40,24 +40,69 @@ nav {
     white-space: nowrap;
 }
 
-.auth-buttons {
+.auth-buttons, .user-info {
     display: flex;
+    align-items: center;
     gap: 1rem;
 }
 
 .auth-btn {
-    padding: 10px 25px;
-    border: 2px solid #000000;
-    border-radius: 25px;
+    background-color: #f0f0f0;
+    border: 1px solid #e0e0e0;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: #333;
     cursor: pointer;
-    background: transparent;
-    color: #000000;
-    transition: 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .auth-btn:hover {
-    background: #000000;
-    color: #ffffff;
+    background-color: black;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #f0f0f0;
+    transition: border-color 0.3s;
+}
+
+.profile-pic:hover {
+    border-color: #cccccc;
+}
+
+.upload-btn {
+    background-color: #f5f5f5;
+    color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+
+.upload-btn:hover {
+    background-color: black;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.upload-btn a {
+    color: black;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.upload-btn *:hover {
+    color: white;
+}
+
+.upload-btn a .material-symbols-outlined:hover {
+    color: white;
 }
 
 /* Level Container */
@@ -399,4 +444,12 @@ nav {
     .level-title-nav {
         font-size: 1rem;
     }
+}
+
+.home {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: black;
+    text-decoration: none;
 }

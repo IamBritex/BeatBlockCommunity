@@ -6,21 +6,20 @@
     <link rel="shortcut icon" href="https://beatblock.wiki.gg/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BeatBlock Community</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
 </head>
 <body>
     <!-- Navbar -->
     <nav>
         <img src="https://beatblock.wiki.gg/favicon.ico" alt="BeatBlock Logo" class="logo">
-        <div>
-            BeatBlock Community
-        </div>
+        <div>BeatBlock Community</div>
         
         <div class="search-container">
             <button class="filter-btn">
                 <span class="material-symbols-outlined">tune</span>
                 <span>Filters</span>
-            </button>
+            </button>          
             <input type="text" class="search-input" placeholder="Search levels...">
             <span class="material-symbols-outlined search-icon">search</span>
         </div>
@@ -30,114 +29,42 @@
             <button class="auth-btn" id="register-btn">Register</button>
         </div>
         <div class="user-info" id="user-info" style="display: none;">
-
-            <button class="upload-btn" id="upload-btn"><a href="upload/upload.html" style="color: white; text-decoration: none;">Upload Level</a></button>
+            <button class="upload-btn" id="upload-btn">
+                <a href="upload/upload.html" style="text-decoration: none;">
+                    <span class="material-symbols-outlined">upload</span>
+                    Upload Level
+                </a>
+            </button>
             <span id="user-name"></span>
             <img id="user-photo" alt="Profile Picture" class="profile-pic">
-            <button class="auth-btn" id="logout-btn">Logout</button>
+            <button class="auth-btn" id="logout-btn"><span class="material-symbols-outlined">logout</span></button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
         <img src="https://beatblock.wiki.gg/images/a/a9/Beatblock_logo.png" alt="BeatBlock" class="game-logo">
-        <button class="download-btn">
-            <span class="material-symbols-outlined">download</span>
-            Download Now
-        </button>
+        <div class="buttons-links">
+            <a href="https://bubbletabby.itch.io/beatblock" target="_blank" class="download-btn">
+                <span class="material-symbols-outlined">download</span>
+                Download Now
+            </a>
+            <a href="https://discord.gg/j6qRJvRRq4" target="_blank" class="discord-link">
+                <i class="fab fa-discord"></i>
+                Discord Community
+            </a>
+        </div>
     </section>
 
     <!-- Levels Grid -->
-    <div class="levels-grid" id="levels-grid">
-        <!-- This will be dynamically populated -->
-    </div>
+    <div class="levels-grid" id="levels-grid"></div>
 
     <!-- No Levels Message -->
-    <div id="no-levels" style="display: none; text-align: center; margin: 20px;">
-        <p>No levels are available at the moment. Be the first to upload a level!</p>
+    <div id="no-levels" style="display: none;">
+        <p>:/ <br> No related result, try something else</p>
     </div>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
-        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-
-        // Tu configuración de Firebase aquí
-        const firebaseConfig = {
-          apiKey: "AIzaSyAkCSNglCmPI8kU2UnB0DfCZN5d3F0qKew",
-          authDomain: "beatblockcommunity-be8d7.firebaseapp.com",
-          projectId: "beatblockcommunity-be8d7",
-          storageBucket: "beatblockcommunity-be8d7.appspot.com",
-          messagingSenderId: "661527648636",
-          appId: "1:661527648636:web:6beb30be83a0df72542cf9",
-          measurementId: "G-BDZR1G380X"
-        };
-
-        // Inicialización de Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-
-        // Obtener elementos del DOM
-        const authButtons = document.getElementById('auth-buttons');
-        const userInfo = document.getElementById('user-info');
-        const userPhoto = document.getElementById('user-photo');
-        const userName = document.getElementById('user-name');
-        const uploadBtn = document.getElementById('upload-btn');
-        const logoutBtn = document.getElementById('logout-btn');
-        const loginBtn = document.getElementById('login-btn');
-        const registerBtn = document.getElementById('register-btn');
-
-        // Función para manejar el estado del usuario
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // El usuario está autenticado
-                authButtons.style.display = 'none'; // Ocultar botones de login/registro
-                userInfo.style.display = 'flex'; // Mostrar la información del usuario
-
-                // Obtener la información del usuario desde Firestore
-                const userDocRef = doc(db, 'users', user.uid);
-                getDoc(userDocRef).then(docSnap => {
-                    if (docSnap.exists()) {
-                        const userData = docSnap.data();
-                        userName.textContent = userData.username || user.email.split('@')[0]; // Mostrar nombre de usuario o correo si no hay nombre
-                        if (userData.profilePicture) {
-                            userPhoto.src = userData.profilePicture; // Mostrar foto de perfil
-                        } else {
-                            userPhoto.src = 'https://fonts.googleapis.com/icon?family=Material+Icons+Outlined'; // Mostrar placeholder (ícono de Google Fonts)
-                        }
-                    }
-                });
-
-                // Mostrar el botón de logout
-                logoutBtn.style.display = 'inline-block';
-
-                // Mostrar el botón de subir nivel
-                uploadBtn.style.display = 'inline-block';
-            } else {
-                // El usuario no está autenticado
-                authButtons.style.display = 'flex'; // Mostrar los botones de login/registro
-                userInfo.style.display = 'none'; // Ocultar la información del usuario
-            }
-        });
-
-        // Eventos para los botones
-        loginBtn.addEventListener('click', () => {
-            window.location.href = 'auth/login/login.html'; // Redirigir a la página de login
-        });
-
-        registerBtn.addEventListener('click', () => {
-            window.location.href = 'auth/register/register.html'; // Redirigir a la página de registro
-        });
-
-        logoutBtn.addEventListener('click', () => {
-            signOut(auth).then(() => {
-                // Redirigir a la página principal después de cerrar sesión
-                window.location.href = 'index.html';
-            }).catch((error) => {
-                console.error('Error al cerrar sesión:', error);
-            });
-        });
-    </script>
+    <script type="module" src="index.js"></script>
+    <script type="module" src="verifyAuth.js"></script>
 </body>
 </html>

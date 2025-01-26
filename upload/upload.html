@@ -8,79 +8,71 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 </head>
 <body>
-    <!-- Navbar -->
     <nav>
         <div class="editable file-upload">
-            <input type="file" id="level-file">
-            <div class="download-btn">Upload level</div>
+            <button id="save-level-btn">Guardar nivel</button>
         </div>
     </nav>
 
-    <!-- Level Details -->
     <div class="level-container">
-        <!-- Columna izquierda -->
         <div class="left-column">
             <div class="editable file-upload">
                 <input type="file" id="cover-upload" accept="image/*">
                 <div class="preview-section">
-                    <img src="" class="preview-media" id="cover-preview" alt="Cover preview">
+                    <img src="/placeholder.svg" class="preview-media" id="cover-preview" alt="Cover preview">
                     <span class="material-symbols-outlined upload-icon">image</span>
                 </div>
+                <div id="cover-link"></div>
             </div>
             
             <div class="editable file-upload">
                 <input type="file" id="media-upload" accept="image/*, video/*">
                 <div class="preview-section">
-                    <img src="" class="preview-media" id="image-preview" alt="Media preview">
+                    <img src="/placeholder.svg" class="preview-media" id="image-preview" alt="Media preview">
                     <video controls class="preview-media" id="video-preview"></video>
                     <span class="material-symbols-outlined upload-icon">play_circle</span>
                 </div>
+                <div id="preview-link"></div>
             </div>
         </div>
 
-        <!-- Columna derecha -->
         <div class="right-column">
-            <div class="editable" contenteditable="false" id="level-title">Level Title</div>
+            <div class="editable" contenteditable="true" id="level-title">Título del Nivel</div>
 
             <div class="creator-info">
-                <!-- Avatar manejado por backend (Firebase) -->
-                <img src="" class="profile-pic" id="avatar-preview" alt="Creator avatar" />
+                <img src="/placeholder.svg" class="profile-pic" id="avatar-preview" alt="Creator avatar" />
                 <div class="editable creator-details" contenteditable="false" id="creator-name">
-                    Creator Info
+                    Información del Creador
                 </div>
             </div>
 
             <div class="level-stats">
-                <div class="editable stat-item" id="level-date" contenteditable="false">
-                    <!-- Fecha se insertará automáticamente -->
-                </div>
+                <div class="editable stat-item" id="level-date" contenteditable="false"></div>
             </div>
 
             <div class="editable level-description" contenteditable="true" id="level-description">
-                Level Description
+                Descripción del Nivel
             </div>
 
             <div class="credits-section">
-                <div class="editable credit-item" contenteditable="true" id="creator-credit">
-                    Creator
-                </div>
-                <div class="editable credit-item" contenteditable="true" id="programmer-credit">
-                    Programmer
-                </div>
-                <div class="editable credit-item" contenteditable="true" id="artist-credit">
-                    Artist
-                </div>
-                <div class="editable credit-item" contenteditable="true" id="composer-credit">
-                    Composer
-                </div>
+                <div class="editable credit-item" contenteditable="true" id="creator-credit">Creador</div>
+                <div class="editable credit-item" contenteditable="true" id="programmer-credit">Programador</div>
+                <div class="editable credit-item" contenteditable="true" id="artist-credit">Artista</div>
+                <div class="editable credit-item" contenteditable="true" id="composer-credit">Compositor</div>
             </div>
 
-            <div class="editable file-upload">
-                <input type="file" accept=".zip" id="zip-upload">
-                <div class="download-btn">Upload ZIP</div>
+            <div class="editable ">
+                <input type="text" id="zip-input" placeholder="Enlace de MediaFire para el archivo .ZIP" class="zip-input">
+                <div class="instructions">
+                    Instrucciones:<br>
+                    1. Sube tu .ZIP a MediaFire<br>
+                    2. Pega el enlace de MediaFire aquí
+                </div>
             </div>
         </div>
     </div>
+
+    <div id="toast" class="toast"></div>
 
     <script type="module" src="upload.js"></script>
 </body>
